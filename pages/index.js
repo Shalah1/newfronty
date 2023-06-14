@@ -1,16 +1,45 @@
 import React from 'react';
-import Footer from './components/footer';
+import Head from 'next/head'
+import Footer from './components/Footer';
+import Slider from './components/HomeSlider';
+import Slider2 from './components/CustomSlider';
+
+import { useState,useEffect } from 'react'
+import { Inter } from 'next/font/google'
+// import Navbar from './components/NavbarCustom';
+// import Navbar from '../citizen/components/CustomNavbar'
+// import Slider2 from '../citizen/components/CustomSlider'
+// import Slider from '../citizen/components/HomeSlider'
 import { useRouter } from 'next/router';
-import UserProfile from './employee/users/[id]';
+// import Navbar from '../components/CustomNavbar';
+// import Slider2 from '../employee/components/CustomSlider'
+// import Slider from '../employee/components/HomeSlider'
 
-import Login from './employee/login/signup';
 
-function HomePage() {
+
+// import Login from './employee/login/signup';
+const inter = Inter({ subsets: ['latin'] })
+
+ function HomePage() {
+ 
   const router=useRouter()
   const loginroute =()=>{router.push('/employee/login/signin')}
   const Signuproute =()=>{router.push('/employee/login/signup')}
   const  eemployeeroute =()=>{router.push('/employee/dashboard/getusers')}
-    return (
+  const images = [
+    '/image/employee/banner2.png',
+    '/image/employee/banner1.png',
+    'https://www.daily-sun.com/assets/news_images/2016/07/07/Community-Health.jpg',
+  
+
+  ];
+
+
+  // const loginroute =()=>{router.push('/employee/login/signin')}
+  // const Signuproute =()=>{router.push('/employee/login/signup')}
+  // const  eemployeeroute =()=>{router.push('/employee/dashboard/getusers')}
+    
+  return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-gray-800 text-white py-4">
         <div className="container mx-auto flex justify-between items-center">
@@ -47,11 +76,19 @@ Ultimately, the goal of e-governance in the e-health sector is to improve the qu
         </button>
       </main>
 
-      <footer className="bg-gray-800 text-white py-4">
+      {/* <footer className="bg-gray-800 text-white py-4">
         <div className="container mx-auto flex justify-center items-center">
-          <p>&copy; @E-Goverence</p>
+          <p>&copy; Footer</p>
         </div>
-      </footer>
+      </footer> */}
+       {/* <Navbar/> */}
+            <Slider/>
+      
+      <Slider2  images={images}/>
+      
+      {/* <BlogCard/> */}
+
+       <Footer/>
     </div>
   );
 }
